@@ -1,8 +1,13 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        sL = [[1]*i for i in range(1,numRows+1)]
-        for i in range(1,numRows):
-            for j in range(1,len(sL[i-1])):
-                sL[i][j] =  sL[i-1][j-1] + sL[i-1][j]
-        return sL
-        
+        tr = []*numRows
+
+        for i in range(0, numRows):
+            t = []*i
+            for j in range(i+1):
+                if j == 0 or j == i:
+                    t.append(1)
+                else:
+                    t.append(tr[i-1][j-1] + tr[i-1][j])
+            tr.append(t)
+        return tr
