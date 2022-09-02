@@ -1,10 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        num_idx = {}
+        hashD = {}
         
-        for i, num in enumerate(nums):
-            if target - num in num_idx:
-                return [num_idx[target-num], i]
-            num_idx[num] = i
-            
+        for i, n in enumerate(nums):
+            if target - n in hashD:
+                return [hashD[target-n], i]
+            hashD[n] = i
         return []
