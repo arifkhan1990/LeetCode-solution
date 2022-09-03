@@ -4,40 +4,23 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        curr = ListNode()
-        if l1 is None and l2 is None:
-            return
-        if l1 is None:
-            head = l2
-        elif l2 is None:
-            head = l1
-        else:
-            i = 0
-            while l1 or l2:
-                if i == 0:
-                    if l1.val < l2.val:
-                        curr = l1
-                        l1 = l1.next
-                    else:
-                        curr = l2
-                        l2 = l2.next
-                    head = curr
-                if l2 is None:
-                    curr.next = l1
-                    l1 = l1.next
-                elif l1 is None:
-                    curr.next = l2
-                    l2 = l2.next
-                else:
-                    if l1.val < l2.val:
-                        curr.next = l1
-                        l1 = l1.next
-                    else:
-                        curr.next = l2
-                        l2 = l2.next
-                curr = curr.next
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        ans = dum = ListNode(None)
 
-                i = 1
-        return head
-        
+        while list1 is not None or list2 is not None:
+            if list1 is not None and list2 is not None and list1.val <= list2.val:
+                ans.next = list1
+                list1 = list1.next
+            elif list1 is not None and list2 is not None and list1.val > list2.val:
+                ans.next = list2
+                list2 = list2.next
+            elif list1 is None:
+                ans.next = list2
+                list2 = list2.next
+            else:
+                ans.next = list1
+                list1 = list1.next
+            ans = ans.next
+        return dum.next
+                
+                
