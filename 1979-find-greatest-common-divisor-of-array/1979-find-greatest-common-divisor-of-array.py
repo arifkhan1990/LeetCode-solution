@@ -5,4 +5,5 @@ class Solution:
         else:
             return self.gcd(m, n%m)
     def findGCD(self, nums: List[int]) -> int:
-        return self.gcd(max(nums), min(nums))
+        nums.sort()
+        return self.gcd(nums[-1], nums[0])
