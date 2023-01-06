@@ -6,4 +6,6 @@ class Solution:
             spend += i
             if spend <= coins:
                 ans += 1
+            else:
+                break
         return ans
