@@ -1,21 +1,14 @@
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        left = 0
-        right = 0
-        max_length = 0
-        zero_count = 0
-
-        while right < len(nums):
-            if nums[right] == 0:
-                zero_count += 1
-
-            while zero_count > 1:
-                if nums[left] == 0:
-                    zero_count -= 1
-                left += 1
-
-            max_length = max(max_length, right - left + 1)
-            right += 1
-
-        return max_length - 1 if max_length > 0 else 0  # Subtract 1 to account for the deleted element
-
+        l , k = 0, 1
+        
+        for r in range(len(nums)):
+            if nums[r] == 0:
+                k -= 1
+            
+            if k < 0:
+                if nums[l] == 0:
+                    k += 1
+                l += 1
+            
+        return r-l
