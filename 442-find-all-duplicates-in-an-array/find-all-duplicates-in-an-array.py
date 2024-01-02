@@ -1,7 +1,5 @@
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        nums.sort()
-
         ans = set()
         for i in nums:
                 pos = abs(i) - 1
