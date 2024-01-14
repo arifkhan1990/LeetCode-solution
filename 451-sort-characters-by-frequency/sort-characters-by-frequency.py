@@ -1,9 +1,13 @@
+import heapq
 from collections import Counter
 class Solution:
     def frequencySort(self, s: str) -> str:
         cnt = Counter(s)
-        ans = cnt.most_common()
+        heap = [(-fre, ch) for ch, fre in cnt.items()]
+        heapq.heapify(heap)
+
         res = ""
-        for x in ans:
-            res += x[0]*x[1]
+        while heap:
+            fre, ch = heapq.heappop(heap)
+            res += ch*(-fre)
         return res
