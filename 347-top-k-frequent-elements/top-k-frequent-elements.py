@@ -10,6 +10,5 @@ class Solution:
         for _ in range(k):
             freq, item = heapq.heappop(min_heap)
             ans.append(item)
-        ans.sort()
         return ans
         
