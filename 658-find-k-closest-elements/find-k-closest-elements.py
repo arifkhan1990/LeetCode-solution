@@ -1,12 +1,17 @@
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        left, right = 0, len(arr)-k
+        left, right = 0, len(arr) - 1
 
-        while left < right:
-            mid = (left+right)//2
+        # Use sliding window approach
+        while right - left + 1 > k:
+            left_diff = abs(arr[left] - x)
+            right_diff = abs(arr[right] - x)
 
-            if x - arr[mid] > arr[mid + k] - x:
-                left = mid + 1
+            # Remove the element with a larger absolute difference
+            if left_diff > right_diff:
+                left += 1
             else:
-                right = mid
-        return arr[left: left+k]
+                right -= 1
+
+        # Return the k closest elements
+        return arr[left:right + 1]
