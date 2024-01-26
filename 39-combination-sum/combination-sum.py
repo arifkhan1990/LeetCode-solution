@@ -1,7 +1,9 @@
 class Solution:
-
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def backtrack(s, t,p):
+        ans = []
+        
+        sunsets = []
+        def solve(s,t,p):
             if t == 0:
                 ans.append(p[:])
                 return
@@ -11,9 +13,10 @@ class Solution:
                     continue
                 p.append(candidates[i])
 
-                backtrack(i, t-candidates[i], p)
+                solve(i, t-candidates[i], p)
                 p.pop()
-        ans = []
+
         candidates.sort()
-        backtrack(0, target, [])
+        solve(0, target, [])
+
         return ans
