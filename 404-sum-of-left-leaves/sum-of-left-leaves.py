@@ -15,6 +15,8 @@ class Solution:
             else:
                 left_leaf_value = 0
 
+                
+
             left_sum = dfs(node.left)
             right_sum = dfs(node.right)
 
