@@ -4,8 +4,8 @@ class Solution:
         mx = max(nums)+1
         sm = [0]*(mx)
 
-        for i in set(nums):
-            sm[i] = nums.count(i) * i
+        for i in nums:
+            sm[i] += i
         
         dp = [0] * (mx)
         dp[1] = sm[1]
