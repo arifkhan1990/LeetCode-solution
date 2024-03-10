@@ -1,15 +1,18 @@
 class Solution:
     def numDistinct(self, s: str, t: str) -> int:
-        @cache
-        def solve(i, j):
+
+        def solve(i, j, dp):
             if j == len(t):
                 return 1
             if i == len(s):
                 return 0
-            ans = 0
+            if dp[i][j] != -1:
+                return dp[i][j]
             if s[i] == t[j]:
-                return solve(i+1, j+1) + solve(i+1, j)
+                dp[i][j] = solve(i+1, j+1, dp) + solve(i+1, j, dp)
             else:
-                return solve(i+1,  j)
-        return solve(0,0)
+                dp[i][j] = solve(i+1,  j, dp)
+            return dp[i][j]
+        dp = [[-1]*(len(t)+1) for _ in range(len(s)+1)]
+        return solve(0,0, dp)
             
