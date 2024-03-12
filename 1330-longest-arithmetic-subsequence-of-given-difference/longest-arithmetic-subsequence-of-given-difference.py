@@ -7,7 +7,5 @@ class Solution:
             sm = 1
             if i - diff in dp:
                 sm += dp[i-diff]
-                ans = max(ans, sm)
             dp[i] = sm
-
-        return ans
+        return max(dp.values())
