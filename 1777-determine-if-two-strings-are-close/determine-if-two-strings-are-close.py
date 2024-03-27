@@ -1,6 +1,14 @@
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
-        pre_cnt1 = list(Counter(word1).values())
-        pre_cnt2 = list(Counter(word2).values())
+        pre_cnt1 = Counter(word1)
+        pre_cnt2 = Counter(word2)
+
+        # Check if the sets of characters are equal
+        if set(pre_cnt1.keys()) != set(pre_cnt2.keys()):
+            return False
         
-        return (sorted(word1) == sorted(word2) or sorted(pre_cnt1) == sorted(pre_cnt2)) and set(word1) == set(word2)
+        # Check if the sets of counts are equal
+        if set(pre_cnt1.values()) != set(pre_cnt2.values()):
+            return False
+        
+        return sorted(pre_cnt1.values()) == sorted(pre_cnt2.values())
