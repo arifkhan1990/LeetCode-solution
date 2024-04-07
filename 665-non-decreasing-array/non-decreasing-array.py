@@ -8,7 +8,7 @@ class Solution:
                 else:
                     nums[i] = nums[i - 1]
                 d += 1
-                break
+            if d > 1:
+                return 0
 
-
-        return nums == sorted(nums)
+        return 1
