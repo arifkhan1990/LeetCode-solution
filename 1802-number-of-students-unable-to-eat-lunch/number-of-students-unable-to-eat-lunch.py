@@ -7,8 +7,7 @@ class Solution:
                 sandwiches.pop(0)
                 k = 0
             else:
-                x = students.pop(0) 
-                students.append(x)
+                students.append(students.pop(0))
                 k += 1
         return len(sandwiches)
                 
