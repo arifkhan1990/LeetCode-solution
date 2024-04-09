@@ -3,15 +3,13 @@ class Solution:
         ans = 0
         mx = tickets[k]
         for i, n in enumerate (tickets):
-            if i <= k:
-                if n >= mx:
-                    ans += mx
-                else:
-                    ans += n
+            if n >= mx:
+                ans += mx
             else:
-                if n >= mx:
-                    ans += mx-1
-                else:
-                    ans += n
+                ans += n
+
+            if i > k and n >= mx:
+                ans -= 1
+
 
         return ans
