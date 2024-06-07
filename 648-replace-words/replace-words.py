@@ -11,5 +11,3 @@ class Solution:
         words = sentence.split()
         result = [find_root(word) for word in words]
         return ' '.join(result)
-
-        
