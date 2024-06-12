@@ -12,4 +12,3 @@ class Solution:
                 mid += 1
     
         return nums
-        
